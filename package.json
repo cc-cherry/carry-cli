@@ -1,0 +1,53 @@
+{
+  "name": "carry-cli",
+  "version": "1.0.0",
+  "description": "一个项目配置文件管理工具,也是一个模板管理脚手架",
+  "author": "cc-chery",
+  "license": "ISC",
+  "keywords": [
+    "cli",
+    "config manager",
+    "template manager"
+  ],
+  "main": "src/index.js",
+  "bin": {
+    "cy": "src/index.js"
+  },
+  "scripts": {
+    "dev": "node src/index.js",
+    "tml": "node src/generator.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "cz",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "detect-package-manager": "^2.0.1",
+    "download-git-repo": "^3.0.2",
+    "edit-json-file": "^1.7.0",
+    "inquirer": "8.2.5",
+    "metalsmith-filter": "^1.0.2"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.38.5",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "commitizen": "^4.3.0",
+    "consolidate": "^0.16.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.39.0",
+    "handlebars": "^4.7.7",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
+    "metalsmith": "^2.5.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}

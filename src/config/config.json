@@ -1,0 +1,3 @@
+{
+  "configurable": ["eslint", "editorconfig", "stylelint", "markdownlint", "prettier", "commitizen", "husky", "lintstaged", "commitlint"]
+}
