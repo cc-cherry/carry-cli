@@ -1,0 +1,1 @@
+npx --no-install lint-stagednpx --no-install lint-stagednpx --no-install lint-stagednpx --no-install lint-stagednpx --no-install lint-stagednpx --no-install lint-stagednpx --no-install lint-staged

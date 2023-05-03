@@ -23,11 +23,17 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "^10.0.1",
     "detect-package-manager": "^2.0.1",
     "download-git-repo": "^3.0.2",
     "edit-json-file": "^1.7.0",
+    "execa": "5.1.1",
+    "figlet": "^1.6.0",
+    "fs-extra": "^11.1.1",
     "inquirer": "8.2.5",
-    "metalsmith-filter": "^1.0.2"
+    "metalsmith-filter": "^1.0.2",
+    "ora": "5.4.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.5",

@@ -1,27 +1,17 @@
-const fs = require('node:fs')
+#!/usr/bin/env node
+
 const path = require('node:path')
 const inquirer = require('inquirer')
+const { savePresets } = require('./utils')
 
 const presetFile = `${path.resolve(__dirname)}/config/preset.json`
-const configFile = `${path.resolve(__dirname)}/config/config.json`
 
-const { configurable } = getJson(configFile)
-const { presets } = getJson(presetFile)
-
-function getJson(filename) {
-  const config = fs.readFileSync(filename, 'utf8')
-  return JSON.parse(config)
+function savePreset(presets, preset) {
+  const ps = [].concat(presets, preset)
+  savePresets(presetFile, { presets: ps })
 }
 
-function savePreset(preset) {
-  presets.push(preset)
-  fs.writeFile(presetFile, JSON.stringify({ presets }), 'utf8', (err) => {
-    if (err)
-      console.log(`保存预设失败，请稍后再试! ${err}`)
-  })
-}
-
-function getProjType() {
+function getProjType(presets) {
   return inquirer.prompt([
     {
       type: 'list',
@@ -33,7 +23,10 @@ function getProjType() {
 }
 
 module.exports = async function () {
-  let presetVal = await getProjType()
+  const { configurable } = global.carry.config
+  const { presets } = global.carry.presetConfig
+
+  let presetVal = await getProjType(presets)
   if (presetVal.preset === '') {
     presetVal = await inquirer.prompt([
       {
@@ -61,7 +54,7 @@ module.exports = async function () {
             validate: value => value !== '',
           },
         ])
-        savePreset({
+        savePreset(presets, {
           name: res.name,
           value: presetVal.preset,
         })
