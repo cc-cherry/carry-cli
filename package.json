@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "node src/index.js",
     "tml": "node src/generator.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node src/test.js",
     "commit": "cz",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

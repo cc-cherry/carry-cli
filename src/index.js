@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
+const path = require('node:path')
 const { Command } = require('commander')
 const figlet = require('figlet')
-const ora = require('ora')
+const fs = require('fs-extra')
 const init = require('./init')
 const cli = require('./cli')
 const generator = require('./generator')
 const { error, success, warning, log } = require('./utils')
+const { presetGensMapping } = require('./generators/gens')
 
 const program = new Command()
 
@@ -66,7 +68,21 @@ function hello() {
   if (userChoicePresets.length === 0)
     return
 
-  await generator(userChoicePresets)
+  const gens = []
+  for (const preset of userChoicePresets)
+    gens.push(presetGensMapping[preset])
+
+  await (async () => {
+    for (const Gen of gens)
+      await (new Gen()).install()
+  })()
+
+  // await gens.forEach(async Gen => await (new Gen()).install())
+
+  await fs.copy(path.resolve(path.dirname(__dirname), 'dist'), process.cwd())
+  // fs.emptyDir(path.resolve(path.dirname(__dirname), 'dist'))
+
+  // await generator(userChoicePresets)
 
   hello()
 })()

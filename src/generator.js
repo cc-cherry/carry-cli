@@ -14,7 +14,6 @@ const chalk = require('chalk')
 const { log, success, error, warning, copyTemplateFiles } = require('./utils')
 
 const packagejson = editJsonFile(path.resolve(process.cwd(), 'package.json'))
-console.log(packagejson)
 
 const presetFileMapping = {
   eslint: ['.eslintrc', '.eslintignore', '.vscode\\extensions.json', '.vscode\\settings.json'],
