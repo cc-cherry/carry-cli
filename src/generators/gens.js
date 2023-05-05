@@ -15,7 +15,7 @@ class EslitGenerator extends Generate {
     super()
     this.files.push(...['.eslintrc', '.eslintignore', '.vscode\\extensions.json', '.vscode\\settings.json'])
     this.shells.push(...[
-      `${this.packagePrefix}-D eslint @antfu/eslint-config`,
+      `${this.packagePrefix}-D eslint typescript @antfu/eslint-config`,
     ])
   }
 }
@@ -107,13 +107,18 @@ class LintstagedGenerator extends Generate {
   constructor() {
     super()
 
-    this.shells.push(...[`${this.packagePrefix}-D lint-staged`])
+    this.shells.push(...[`${this.packagePrefix}-D lint-staged@11.2.2`])
 
-    this.postFunc = () => {
-      fs.appendFileSync(path.resolve(process.cwd(), '.husky/pre-commit.sh'), 'npx --no-install lint-staged')
+    this.postFunc = async () => {
+      const file = path.resolve(process.cwd(), '.husky/pre-commit')
+
+      await fs.ensureFile(file)
+
+      fs.appendFileSync(file, 'npx --no-install lint-staged')
 
       const packagejson = editJsonFile(path.resolve(process.cwd(), 'package.json'))
       packagejson.set('lint-staged.*', 'eslint --fix')
+      packagejson.set('scripts.test', 'echo \"Test: no test specified\"')
       packagejson.save()
     }
   }

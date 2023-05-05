@@ -72,15 +72,12 @@ function hello() {
   for (const preset of userChoicePresets)
     gens.push(presetGensMapping[preset])
 
-  await (async () => {
-    for (const Gen of gens)
-      await (new Gen()).install()
-  })()
-
+  for (const Gen of gens)
+    await (new Gen()).install()
   // await gens.forEach(async Gen => await (new Gen()).install())
 
   await fs.copy(path.resolve(path.dirname(__dirname), 'dist'), process.cwd())
-  // fs.emptyDir(path.resolve(path.dirname(__dirname), 'dist'))
+  fs.emptyDir(path.resolve(path.dirname(__dirname), 'dist'))
 
   // await generator(userChoicePresets)
 

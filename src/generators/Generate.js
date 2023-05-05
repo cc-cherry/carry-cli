@@ -23,7 +23,7 @@ class Generate {
   async install() {
     // 构建模板
     if (this.files.length !== 0) {
-      const templateSpinner = ora('Build Templates').start()
+      const templateSpinner = ora('Build Templates > ').start()
       const temRes = await this.initTemplate()
 
       if (temRes === 'ok')
@@ -33,7 +33,7 @@ class Generate {
     }
 
     // 执行shell脚本
-    this.shells.forEach(async (shell) => {
+    for (const shell of this.shells) {
       const spinner = ora(`Loading dependencies: ${chalk.blue(shell)}`).start()
       try {
         await execa(shell)
@@ -41,12 +41,16 @@ class Generate {
       catch (err) {
         log(error(err))
         spinner.fail()
+
+        const file = path.resolve(process.cwd(), '.failshell.sh')
+
+        await fs.ensureFile(file)
+
+        fs.appendFileSync(file, shell)
       }
-      finally {
-        spinner.succeed()
-      }
-    })
-    this.postFunc && this.postFunc()
+      spinner.succeed()
+    }
+    this.postFunc && await this.postFunc()
   }
 
   /**
@@ -54,8 +58,10 @@ class Generate {
    * @returns Promise
    */
   initTemplate() {
+    log(`start 🚀 :${chalk.blue(this.files.join())}`)
     return new Promise((resolve, reject) => {
       Metalsmith(__dirname)
+        .clean(false)
         .source('../../templates')
         .destination('../../dist')
         .use(filter(this.files))

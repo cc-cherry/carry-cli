@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { EslitGenerator } = require('./generators/gens')
+const fs = require('fs-extra')
 
-const eslintGen = new EslitGenerator()
-
-eslintGen.install()
+fs.ensureFile('../.xx/text', (err) => {
+  console.log(err)
+})
