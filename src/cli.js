@@ -1,14 +1,11 @@
 #!/usr/bin/env node
 
-const path = require('node:path')
 const inquirer = require('inquirer')
 const { savePresets } = require('./utils')
 
-const presetFile = `${path.resolve(__dirname)}/config/preset.json`
-
 function savePreset(presets, preset) {
   const ps = [].concat(presets, preset)
-  savePresets(presetFile, { presets: ps })
+  savePresets(ps)
 }
 
 function getProjType(presets) {
@@ -23,8 +20,8 @@ function getProjType(presets) {
 }
 
 module.exports = async function () {
-  const { configurable } = global.carry.config
-  const { presets } = global.carry.presetConfig
+  const configurable = global.carry.configurable
+  const { presets } = global.carry.config
 
   let presetVal = await getProjType(presets)
   if (presetVal.preset === '') {

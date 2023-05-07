@@ -2,6 +2,8 @@
   "extends": "@antfu",
   "rules": {
     "no-console": "off",
-    "no-template-curly-in-string": "off"
+    "no-template-curly-in-string": "off",
+    "no-eval": "off",
+    "max-statements-per-line": "off"
   }
 }

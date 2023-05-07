@@ -6,7 +6,7 @@ const Metalsmith = require('metalsmith')
 const handlebars = require('handlebars')
 const filter = require('metalsmith-filter')
 const fs = require('fs-extra')
-const { log, error } = require('../utils')
+const { log, error } = require('./utils')
 
 class Generate {
   shells = []
@@ -62,8 +62,8 @@ class Generate {
     return new Promise((resolve, reject) => {
       Metalsmith(__dirname)
         .clean(false)
-        .source('../../templates')
-        .destination('../../dist')
+        .source('../templates')
+        .destination('../dist')
         .use(filter(this.files))
         .use((files, metalsmith, done) => {
           Object.keys(files).forEach((filename) => {

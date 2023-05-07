@@ -1,3 +1,43 @@
 {
-  "configurable": ["eslint", "editorconfig", "stylelint", "markdownlint", "prettier", "commitizen", "husky", "lintstaged", "commitlint"]
+  "presets": [
+    {
+      "name": "vue",
+      "value": [
+        "eslint",
+        "editorconfig"
+      ]
+    },
+    {
+      "name": "node",
+      "value": [
+        "eslint",
+        "editorconfig"
+      ]
+    },
+    {
+      "name": "basic",
+      "value": [
+        "eslint",
+        "editorconfig"
+      ]
+    },
+    {
+      "name": "diy",
+      "value": ""
+    }
+  ],
+  "template": {
+    "isDirect": false,
+    "owner": "cc-cherry",
+    "repo": "templates",
+    "branch": "main",
+    "filePath": "templates",
+    "sha": ""
+  },
+  "generator": {
+    "islocal": false,
+    "generatorUrl": "",
+    "sha": "",
+    "shaUrl": ""
+  }
 }

@@ -1,7 +1,7 @@
 const path = require('node:path')
 const editJsonFile = require('edit-json-file')
 const fs = require('fs-extra')
-const { Generate } = require('./Generate')
+
 
 /**
  * EslitGenerator
@@ -146,17 +146,9 @@ const presetGensMapping = {
   husky: HuskyGenerator,
   lintstaged: LintstagedGenerator,
   commitlint: CommitlintGenerator,
+  cherry: '',
 }
 
-module.exports = {
-  // EslitGenerator,
-  // EditorGenerator,
-  // StylelintGenerator,
-  // MarkdownlintGenerator,
-  // PrettierGenerator,
-  // CommitizenGenerator,
-  // HuskyGenerator,
-  // LintstagedGenerator,
-  // CommitlintGenerator,
-  presetGensMapping,
-}
+
+module.exports = presetGensMapping
+
