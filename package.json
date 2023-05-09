@@ -1,9 +1,13 @@
 {
   "name": "carry-cli",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "一个项目配置文件管理工具,也是一个模板管理脚手架",
   "author": "cc-chery",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cc-cherry/carry-cli.git"
+  },
   "keywords": [
     "cli",
     "config manager",
