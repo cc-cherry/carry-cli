@@ -1,12 +1,12 @@
 {
-  "name": "carry-cli",
+  "name": "@cc-cherry/carry-cli",
   "version": "0.1.0",
   "description": "一个项目配置文件管理工具,也是一个模板管理脚手架",
   "author": "cc-chery",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:cc-cherry/carry-cli.git"
+    "url": "git+ssh://git@github.com/cc-cherry/carry-cli.git"
   },
   "keywords": [
     "cli",
@@ -17,6 +17,9 @@
   "bin": {
     "cy": "lib/index.js"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "node src/index.js",
     "build": "webpack",
@@ -68,5 +71,16 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/cc-cherry/carry-cli/issues"
+  },
+  "homepage": "https://github.com/cc-cherry/carry-cli#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
