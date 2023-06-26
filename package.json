@@ -1,6 +1,6 @@
 {
   "name": "@cc-cherry/carry-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "一个项目配置文件管理工具,也是一个模板管理脚手架",
   "author": "cc-chery",
   "license": "MIT",
