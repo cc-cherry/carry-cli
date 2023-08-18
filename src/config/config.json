@@ -36,8 +36,8 @@
   },
   "generator": {
     "islocal": false,
-    "generatorUrl": "https://raw.githubusercontent.com/cc-cherry/templates/main/index.js",
+    "generatorUrl": "https://cc-templates.netlify.app/index.js",
     "sha": "",
-    "shaUrl": "https://raw.githubusercontent.com/cc-cherry/templates/main/sha"
+    "shaUrl": "https://cc-templates.netlify.app/sha"
   }
 }
